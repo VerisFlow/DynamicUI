@@ -1,0 +1,73 @@
+﻿{
+  "window": {
+    "title": "SampleProcessingDialog2",
+    "width": 450,
+    "height": 200,
+    "sizeToContent": "Manual",
+    "minWidth": 300,
+    "minHeight": 150
+  },
+  "theme": {
+    "background": "#FF2D2D30",
+    "foreground": "#FFFFFFFF",
+    "controlBackground": "#FF3F3F46",
+    "accent": "#FF007ACC",
+    "accentForeground": "#FFFFFFFF",
+    "borderColor": "#FF555555",
+    "errorForeground": "#FFFF8A8A"
+  },
+  "layoutDefinition": {
+    "columnDefinitions": [
+      "Auto",
+      "*"
+    ],
+    "rowDefinitions": [
+      "Auto",
+      "*",
+      "Auto"
+    ]
+  },
+  "controls": [
+    {
+      "type": "Label",
+      "content": "StepName:",
+      "gridRow": 0,
+      "gridColumn": 0,
+      "margin": "5",
+      "verticalAlignment": "Center",
+      "horizontalAlignment": "Right"
+    },
+    {
+      "type": "TextBox",
+      "name": "StepName",
+      "text": "",
+      "gridRow": 0,
+      "gridColumn": 1,
+      "margin": "5",
+      "verticalAlignment": "Center"
+    },
+    {
+      "type": "Button",
+      "name": "SaveButton",
+      "content": "Save Config",
+      "action": "exportdata_and_close",
+      "gridRow": 2,
+      "gridColumn": 1,
+      "margin": "10",
+      "padding": "10,5",
+      "horizontalAlignment": "Right",
+      "verticalAlignment": "Bottom"
+    }
+  ],
+  "dataExport": {
+    "targetFile": "C:\\Users\\Chu\\Documents\\GitHub\\DynamicWpf\\Output\\sample_run.csv",
+    "includeHeaders": true,
+    "writeMode": "overwrite",
+    "mappings": [
+      {
+        "columnHeader": "StepName",
+        "sourceControlName": "StepName"
+      }
+    ]
+  }
+}

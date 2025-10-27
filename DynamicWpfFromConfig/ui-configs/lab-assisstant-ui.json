@@ -1,0 +1,333 @@
+﻿{
+  "window": {
+    "title": "Experiment Assistant Dashboard",
+    "width": 1000,
+    "height": 700,
+    "minWidth": 600,
+    "minHeight": 450
+  },
+  "theme": {
+    "background": "#F0F0F0",
+    "controlBackground": "#FFFFFF",
+    "accent": "#0078D4",
+    "accentForeground": "#FFFFFF"
+  },
+  "layoutDefinition": {
+    "columnDefinitions": [
+      "*"
+    ],
+    "rowDefinitions": [
+      "Auto",
+      "*",
+      "Auto"
+    ]
+  },
+  "dataExport": {
+    "targetFileFromControl": "savePathBox",
+    "includeHeaders": true,
+    "writeMode": "append",
+    "delimiter": ",",
+    "mappings": [
+      {
+        "columnHeader": "SampleID",
+        "sourceControlName": "sampleIdBox"
+      },
+      {
+        "columnHeader": "Notes",
+        "sourceControlName": "notesBox"
+      },
+      {
+        "columnHeader": "Volume",
+        "sourceControlName": "volumeComboBox"
+      }
+    ]
+  },
+  "controls": [
+    {
+      "type": "Border",
+      "name": "HeaderBar",
+      "gridRow": 0,
+      "gridColumn": 0,
+      "backgroundColor": "#0078D4",
+      "padding": "5,3,5,10",
+      "contentControls": [
+        {
+          "type": "Grid",
+          "columnDefinitions": [
+            "*",
+            "Auto"
+          ],
+          "contentControls": [
+            {
+              "type": "TextBlock",
+              "text": "Experiment Assistant",
+              "fontSize": 16,
+              "foregroundColor": "#FFFFFF",
+              "verticalAlignment": "Center"
+            },
+            {
+              "type": "WrapPanel",
+              "gridColumn": 1,
+              "horizontalAlignment": "Right",
+              "contentControls": [
+                {
+                  "type": "Button",
+                  "content": "_",
+                  "action": "minimizeWindow",
+                  "width": 30,
+                  "height": 30,
+                  "margin": "0,0,5,0"
+                },
+                {
+                  "type": "Button",
+                  "content": "X",
+                  "action": "closeWindow",
+                  "width": 30,
+                  "height": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TabControl",
+      "name": "MainTabs",
+      "gridRow": 1,
+      "gridColumn": 0,
+      "margin": "5",
+      "tabItems": [
+        {
+          "header": "Experiment Plate",
+          "contentControls": [
+            {
+              "type": "TitrationPlate",
+              "name": "DemoPlate96",
+              "margin": "10",
+              "rows": 8,
+              "columns": 12,
+              "wellSize": 35,
+              "rowHeaders": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G",
+                "H"
+              ],
+              "columnHeaders": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ],
+              "wellDefaults": {
+                "fontSize": 10,
+                "fontWeight": "Bold",
+                "fontColor": "#000000"
+              },
+              "wellData": [
+                {
+                  "row": 0,
+                  "column": 0,
+                  "label": "S1",
+                  "color": "#007ACC",
+                  "fontColor": "#FFFFFF",
+                  "tooltip": "Sample 1"
+                },
+                {
+                  "row": 0,
+                  "column": 1,
+                  "label": "S2",
+                  "color": "#007ACC",
+                  "fontColor": "#FFFFFF"
+                },
+                {
+                  "row": 1,
+                  "column": 0,
+                  "label": "C+",
+                  "color": "#107C10",
+                  "fontColor": "#FFFFFF",
+                  "tooltip": "Positive Control"
+                },
+                {
+                  "row": 1,
+                  "column": 1,
+                  "label": "C-",
+                  "color": "#D13438",
+                  "fontColor": "#FFFFFF",
+                  "tooltip": "Negative Control"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "header": "Data Entry",
+          "contentControls": [
+            {
+              "type": "Grid",
+              "margin": "15",
+              "columnDefinitions": [
+                "Auto",
+                "*"
+              ],
+              "rowDefinitions": [
+                "Auto",
+                "Auto",
+                "*",
+                "Auto",
+                "Auto"
+              ],
+              "contentControls": [
+                {
+                  "type": "Label",
+                  "content": "Sample ID:",
+                  "gridRow": 0,
+                  "gridColumn": 0,
+                  "verticalAlignment": "Center",
+                  "margin": "5"
+                },
+                {
+                  "type": "TextBox",
+                  "name": "sampleIdBox",
+                  "gridRow": 0,
+                  "gridColumn": 1,
+                  "margin": "5"
+                },
+                {
+                  "type": "Label",
+                  "content": "Volume:",
+                  "gridRow": 1,
+                  "gridColumn": 0,
+                  "verticalAlignment": "Center",
+                  "margin": "5"
+                },
+                {
+                  "type": "ComboBox",
+                  "name": "volumeComboBox",
+                  "gridRow": 1,
+                  "gridColumn": 1,
+                  "margin": "5",
+                  "items": [
+                    "50 µL",
+                    "100 µL",
+                    "200 µL"
+                  ],
+                  "defaultSelection": "100 µL"
+                },
+                {
+                  "type": "Label",
+                  "content": "Notes:",
+                  "gridRow": 2,
+                  "gridColumn": 0,
+                  "verticalAlignment": "Top",
+                  "margin": "5"
+                },
+                {
+                  "type": "TextBox",
+                  "name": "notesBox",
+                  "gridRow": 2,
+                  "gridColumn": 1,
+                  "height": 150,
+                  "textWrapping": "Wrap",
+                  "verticalAlignment": "Stretch",
+                  "margin": "5"
+                },
+                {
+                  "type": "WrapPanel",
+                  "gridRow": 3,
+                  "gridColumn": 1,
+                  "margin": "5",
+                  "contentControls": [
+                    {
+                      "type": "TextBox",
+                      "name": "savePathBox",
+                      "width": 300
+                    },
+                    {
+                      "type": "Button",
+                      "content": "Browse Save Path...",
+                      "action": "browsesavefile",
+                      "targetTextBoxName": "savePathBox",
+                      "margin": "5,0,0,0"
+                    }
+                  ]
+                },
+                {
+                  "type": "Button",
+                  "content": "Save Data",
+                  "action": "exportdata",
+                  "gridRow": 4,
+                  "gridColumn": 1,
+                  "horizontalAlignment": "Left",
+                  "margin": "5"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "header": "Log",
+          "contentControls": [
+            {
+              "type": "ListBox",
+              "name": "logView",
+              "margin": "5",
+              "items": [
+                "[INFO] Application started",
+                "[INFO] Theme loaded",
+                "[WARN] 'user-settings.json' not found, using defaults",
+                "[INFO] Experiment Plate 'DemoPlate96' rendered",
+                "[ERROR] Failed to connect to device COM3",
+                "[INFO] Ready"
+              ],
+              "logColorMap": [
+                {
+                  "prefix": "[INFO]",
+                  "color": "#000000"
+                },
+                {
+                  "prefix": "[WARN]",
+                  "color": "#FFA500"
+                },
+                {
+                  "prefix": "[ERROR]",
+                  "color": "#DC143C"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Border",
+      "name": "FooterBar",
+      "gridRow": 2,
+      "gridColumn": 0,
+      "backgroundColor": "#EAEAEA",
+      "borderThickness": "0,1,0,0",
+      "borderColor": "#CCCCCC",
+      "padding": "5",
+      "contentControls": [
+        {
+          "type": "Label",
+          "content": "Status: Ready",
+          "name": "StatusBarText"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,639 @@
+﻿{
+  "window": {
+    "title": "NGS Workflow Configurator",
+    "width": 650,
+    "height": 500
+  },
+  "theme": {
+    "background": "#FFF0F0F0",
+    "foreground": "#FF000000",
+    "controlBackground": "#FFFFFFFF",
+    "accent": "#FF008060",
+    "accentForeground": "#FFFFFFFF",
+    "borderColor": "#FFCCCCCC",
+    "errorForeground": "#FFCF6679"
+  },
+  "layoutDefinition": {
+    "rowDefinitions": [
+      "*"
+    ]
+  },
+  "dataExport": {
+    "targetFileFromControl": "ConfigSavePath",
+    "delimiter": ",",
+    "includeHeaders": true,
+    "writeMode": "overwrite",
+    "mappings": [
+      {
+        "columnHeader": "Enable_LibPrep",
+        "sourceControlName": "LibPrep_Enable"
+      },
+      {
+        "columnHeader": "Enable_LibPrep_QC1",
+        "sourceControlName": "LibPrep_QC1"
+      },
+      {
+        "columnHeader": "Enable_LibPrep_EndRepair",
+        "sourceControlName": "LibPrep_EndRepair"
+      },
+      {
+        "columnHeader": "Enable_LibPrep_Ligation",
+        "sourceControlName": "LibPrep_Ligation"
+      },
+      {
+        "columnHeader": "Volume_EndRepairMix_uL",
+        "sourceControlName": "LibPrep_Vol_EndRepair"
+      },
+      {
+        "columnHeader": "Volume_LigationMix_uL",
+        "sourceControlName": "LibPrep_Vol_Ligation"
+      },
+      {
+        "columnHeader": "Enable_Sequencing",
+        "sourceControlName": "Seq_Enable"
+      },
+      {
+        "columnHeader": "Enable_ClusterGen",
+        "sourceControlName": "Seq_ClusterGen"
+      },
+      {
+        "columnHeader": "Volume_SBS_Reagent_uL",
+        "sourceControlName": "Seq_Vol_SBS"
+      },
+      {
+        "columnHeader": "Volume_Cluster_Reagent_uL",
+        "sourceControlName": "Seq_Vol_Cluster"
+      },
+      {
+        "columnHeader": "Cycles_Read1",
+        "sourceControlName": "Seq_Read1Cycles"
+      },
+      {
+        "columnHeader": "Cycles_Read2",
+        "sourceControlName": "Seq_Read2Cycles"
+      },
+      {
+        "columnHeader": "Enable_Analysis",
+        "sourceControlName": "Analysis_Enable"
+      },
+      {
+        "columnHeader": "Enable_Demultiplexing",
+        "sourceControlName": "Analysis_Demux"
+      },
+      {
+        "columnHeader": "Enable_Alignment",
+        "sourceControlName": "Analysis_Align"
+      },
+      {
+        "columnHeader": "Enable_VariantCalling",
+        "sourceControlName": "Analysis_VariantCall"
+      },
+      {
+        "columnHeader": "Path_ReferenceGenome",
+        "sourceControlName": "Analysis_RefGenomePath"
+      }
+    ]
+  },
+  "controls": [
+    {
+      "type": "TabControl",
+      "name": "MainTabs",
+      "gridRow": 0,
+      "gridColumn": 0,
+      "margin": "5",
+      "tabItems": [
+        {
+          "header": "1. Library Prep",
+          "contentControls": [
+            {
+              "type": "Grid",
+              "columnDefinitions": [
+                "Auto",
+                "*"
+              ],
+              "rowDefinitions": [
+                "Auto",
+                "Auto",
+                "Auto",
+                "Auto",
+                "Auto",
+                "Auto",
+                "Auto"
+              ],
+              "contentControls": [
+                {
+                  "type": "CheckBox",
+                  "name": "LibPrep_Enable",
+                  "content": "Enable Library Prep Workflow",
+                  "gridRow": 0,
+                  "gridColumn": 0,
+                  "columnSpan": 2,
+                  "isBold": true,
+                  "margin": "5"
+                },
+                {
+                  "type": "Border",
+                  "gridRow": 1,
+                  "gridColumn": 0,
+                  "columnSpan": 2,
+                  "margin": "5",
+                  "padding": "5",
+                  "backgroundColor": "#FFFFFFFF",
+                  "contentControls": [
+                    {
+                      "type": "Grid",
+                      "columnDefinitions": [
+                        "*"
+                      ],
+                      "rowDefinitions": [
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto"
+                      ],
+                      "contentControls": [
+                        {
+                          "type": "TextBlock",
+                          "text": "Workflow Steps",
+                          "isBold": true,
+                          "margin": "0,0,0,5"
+                        },
+                        {
+                          "type": "CheckBox",
+                          "name": "LibPrep_QC1",
+                          "content": "Step 1: Quality Control (QC)",
+                          "gridRow": 1,
+                          "margin": "10,5,5,5"
+                        },
+                        {
+                          "type": "CheckBox",
+                          "name": "LibPrep_EndRepair",
+                          "content": "Step 2: End Repair & A-Tailing",
+                          "gridRow": 2,
+                          "margin": "10,5,5,5"
+                        },
+                        {
+                          "type": "CheckBox",
+                          "name": "LibPrep_Ligation",
+                          "content": "Step 3: Adapter Ligation",
+                          "gridRow": 3,
+                          "margin": "10,5,5,5"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "Border",
+                  "gridRow": 2,
+                  "gridColumn": 0,
+                  "columnSpan": 2,
+                  "margin": "5",
+                  "padding": "5",
+                  "backgroundColor": "#FFFFFFFF",
+                  "contentControls": [
+                    {
+                      "type": "Grid",
+                      "columnDefinitions": [
+                        "Auto",
+                        "*"
+                      ],
+                      "rowDefinitions": [
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto"
+                      ],
+                      "contentControls": [
+                        {
+                          "type": "TextBlock",
+                          "text": "Reagent Volumes",
+                          "isBold": true,
+                          "margin": "0,0,0,5"
+                        },
+                        {
+                          "type": "Label",
+                          "content": "End Repair Mix (µL):",
+                          "gridRow": 1,
+                          "verticalAlignment": "Center"
+                        },
+                        {
+                          "type": "TextBox",
+                          "name": "LibPrep_Vol_EndRepair",
+                          "text": "5.0",
+                          "gridRow": 1,
+                          "gridColumn": 1,
+                          "margin": "5"
+                        },
+                        {
+                          "type": "Label",
+                          "content": "Ligation Mix (µL):",
+                          "gridRow": 2,
+                          "verticalAlignment": "Center"
+                        },
+                        {
+                          "type": "TextBox",
+                          "name": "LibPrep_Vol_Ligation",
+                          "text": "15.0",
+                          "gridRow": 2,
+                          "gridColumn": 1,
+                          "margin": "5"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "header": "2. Sequencing",
+          "contentControls": [
+            {
+              "type": "Grid",
+              "columnDefinitions": [
+                "Auto",
+                "*"
+              ],
+              "rowDefinitions": [
+                "Auto",
+                "Auto",
+                "Auto"
+              ],
+              "contentControls": [
+                {
+                  "type": "CheckBox",
+                  "name": "Seq_Enable",
+                  "content": "Enable Sequencing Workflow",
+                  "gridRow": 0,
+                  "gridColumn": 0,
+                  "columnSpan": 2,
+                  "isBold": true,
+                  "margin": "5"
+                },
+                {
+                  "type": "Border",
+                  "gridRow": 1,
+                  "gridColumn": 0,
+                  "columnSpan": 2,
+                  "margin": "5",
+                  "padding": "5",
+                  "backgroundColor": "#FFFFFFFF",
+                  "contentControls": [
+                    {
+                      "type": "Grid",
+                      "columnDefinitions": [
+                        "*"
+                      ],
+                      "rowDefinitions": [
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto"
+                      ],
+                      "contentControls": [
+                        {
+                          "type": "TextBlock",
+                          "text": "Workflow Steps",
+                          "isBold": true,
+                          "margin": "0,0,0,5"
+                        },
+                        {
+                          "type": "CheckBox",
+                          "name": "Seq_ClusterGen",
+                          "content": "Step 1: Cluster Generation",
+                          "gridRow": 1,
+                          "margin": "10,5,5,5"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "Border",
+                  "gridRow": 2,
+                  "gridColumn": 0,
+                  "columnSpan": 2,
+                  "margin": "5",
+                  "padding": "5",
+                  "backgroundColor": "#FFFFFFFF",
+                  "contentControls": [
+                    {
+                      "type": "Grid",
+                      "columnDefinitions": [
+                        "Auto",
+                        "*"
+                      ],
+                      "rowDefinitions": [
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto"
+                      ],
+                      "contentControls": [
+                        {
+                          "type": "TextBlock",
+                          "text": "Reagents & Parameters",
+                          "isBold": true,
+                          "margin": "0,0,0,5"
+                        },
+                        {
+                          "type": "Label",
+                          "content": "SBS Reagent (µL):",
+                          "gridRow": 1,
+                          "verticalAlignment": "Center"
+                        },
+                        {
+                          "type": "TextBox",
+                          "name": "Seq_Vol_SBS",
+                          "text": "150.0",
+                          "gridRow": 1,
+                          "gridColumn": 1,
+                          "margin": "5"
+                        },
+                        {
+                          "type": "Label",
+                          "content": "Cluster Reagent (µL):",
+                          "gridRow": 2,
+                          "verticalAlignment": "Center"
+                        },
+                        {
+                          "type": "TextBox",
+                          "name": "Seq_Vol_Cluster",
+                          "text": "100.0",
+                          "gridRow": 2,
+                          "gridColumn": 1,
+                          "margin": "5"
+                        },
+                        {
+                          "type": "Label",
+                          "content": "Read 1 Cycles:",
+                          "gridRow": 3,
+                          "verticalAlignment": "Center"
+                        },
+                        {
+                          "type": "TextBox",
+                          "name": "Seq_Read1Cycles",
+                          "text": "151",
+                          "gridRow": 3,
+                          "gridColumn": 1,
+                          "margin": "5"
+                        },
+                        {
+                          "type": "Label",
+                          "content": "Read 2 Cycles:",
+                          "gridRow": 4,
+                          "verticalAlignment": "Center"
+                        },
+                        {
+                          "type": "TextBox",
+                          "name": "Seq_Read2Cycles",
+                          "text": "151",
+                          "gridRow": 4,
+                          "gridColumn": 1,
+                          "margin": "5"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "header": "3. Data Analysis",
+          "contentControls": [
+            {
+              "type": "Grid",
+              "columnDefinitions": [
+                "Auto",
+                "*"
+              ],
+              "rowDefinitions": [
+                "Auto",
+                "Auto",
+                "Auto"
+              ],
+              "contentControls": [
+                {
+                  "type": "CheckBox",
+                  "name": "Analysis_Enable",
+                  "content": "Enable Data Analysis Workflow",
+                  "gridRow": 0,
+                  "gridColumn": 0,
+                  "columnSpan": 2,
+                  "isBold": true,
+                  "margin": "5"
+                },
+                {
+                  "type": "Border",
+                  "gridRow": 1,
+                  "gridColumn": 0,
+                  "columnSpan": 2,
+                  "margin": "5",
+                  "padding": "5",
+                  "backgroundColor": "#FFFFFFFF",
+                  "contentControls": [
+                    {
+                      "type": "Grid",
+                      "columnDefinitions": [
+                        "*"
+                      ],
+                      "rowDefinitions": [
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto"
+                      ],
+                      "contentControls": [
+                        {
+                          "type": "TextBlock",
+                          "text": "Workflow Steps",
+                          "isBold": true,
+                          "margin": "0,0,0,5"
+                        },
+                        {
+                          "type": "CheckBox",
+                          "name": "Analysis_Demux",
+                          "content": "Step 1: BCL to FastQ (Demultiplexing)",
+                          "gridRow": 1,
+                          "margin": "10,5,5,5"
+                        },
+                        {
+                          "type": "CheckBox",
+                          "name": "Analysis_Align",
+                          "content": "Step 2: Alignment",
+                          "gridRow": 2,
+                          "margin": "10,5,5,5"
+                        },
+                        {
+                          "type": "CheckBox",
+                          "name": "Analysis_VariantCall",
+                          "content": "Step 3: Variant Calling",
+                          "gridRow": 3,
+                          "margin": "10,5,5,5"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "Border",
+                  "gridRow": 2,
+                  "gridColumn": 0,
+                  "columnSpan": 2,
+                  "margin": "5",
+                  "padding": "5",
+                  "backgroundColor": "#FFFFFFFF",
+                  "contentControls": [
+                    {
+                      "type": "Grid",
+                      "columnDefinitions": [
+                        "Auto",
+                        "*",
+                        "Auto"
+                      ],
+                      "rowDefinitions": [
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto",
+                        "Auto"
+                      ],
+                      "contentControls": [
+                        {
+                          "type": "TextBlock",
+                          "text": "Analysis Parameters",
+                          "isBold": true,
+                          "margin": "0,0,0,5"
+                        },
+                        {
+                          "type": "Label",
+                          "content": "Reference Genome:",
+                          "gridRow": 1,
+                          "verticalAlignment": "Center"
+                        },
+                        {
+                          "type": "TextBox",
+                          "name": "Analysis_RefGenomePath",
+                          "text": "C:\\genomes\\hg38\\hg38.fa",
+                          "gridRow": 1,
+                          "gridColumn": 1,
+                          "margin": "5"
+                        },
+                        {
+                          "type": "Button",
+                          "content": "Browse...",
+                          "gridRow": 1,
+                          "gridColumn": 2,
+                          "margin": "5",
+                          "action": "browseopenfile",
+                          "actionTarget": "Analysis_RefGenomePath"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "header": "4. Run & Save",
+          "contentControls": [
+            {
+              "type": "Grid",
+              "margin": "10",
+              "columnDefinitions": [
+                "Auto",
+                "*"
+              ],
+              "rowDefinitions": [
+                "Auto",
+                "Auto",
+                "Auto"
+              ],
+              "contentControls": [
+                {
+                  "type": "Label",
+                  "content": "Config Save Path:",
+                  "gridRow": 0,
+                  "gridColumn": 0,
+                  "verticalAlignment": "Center",
+                  "margin": "5"
+                },
+                {
+                  "type": "TextBox",
+                  "name": "ConfigSavePath",
+                  "text": "C:\\ngs-runs\\run-config-001.csv",
+                  "gridRow": 0,
+                  "gridColumn": 1,
+                  "margin": "5"
+                },
+                {
+                  "type": "Button",
+                  "content": "Browse Save Path...",
+                  "gridRow": 1,
+                  "gridColumn": 1,
+                  "horizontalAlignment": "Right",
+                  "margin": "5",
+                  "action": "browsesavefile",
+                  "actionTarget": "ConfigSavePath"
+                },
+                {
+                  "type": "WrapPanel",
+                  "gridRow": 2,
+                  "gridColumn": 0,
+                  "columnSpan": 2,
+                  "horizontalAlignment": "Center",
+                  "margin": "20,10,10,10",
+                  "contentControls": [
+                    {
+                      "type": "Button",
+                      "content": "Save Config",
+                      "action": "exportdata",
+                      "margin": "5",
+                      "width": 120,
+                      "height": 30
+                    },
+                    {
+                      "type": "Button",
+                      "content": "!! Start Workflow !!",
+                      "action": "showmessage",
+                      "actionMessage": "NGS Workflow Started (simulation). Config file has been saved.",
+                      "margin": "5",
+                      "width": 150,
+                      "height": 30,
+                      "backgroundColor": "accent",
+                      "foregroundColor": "accentForeground",
+                      "isBold": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

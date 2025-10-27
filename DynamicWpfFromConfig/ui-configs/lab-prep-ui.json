@@ -1,0 +1,245 @@
+﻿{
+  "window": {
+    "title": "Reagent Prep & Plate Layout (Deep Navy Theme)",
+    "width": 1200,
+    "height": 720,
+    "minWidth": 900,
+    "minHeight": 600
+  },
+  "theme": {
+    "background": "#1A232E",
+    "foreground": "#EBEFF5",
+    "controlBackground": "#26323D",
+    "accent": "#00BCD4",
+    "accentForeground": "#1A232E",
+    "borderColor": "#455A64",
+    "errorForeground": "#FF5252"
+  },
+  "layoutDefinition": {
+    "columnDefinitions": [ "*" ],
+    "rowDefinitions": [
+      "*",
+      "auto"
+    ]
+  },
+  "controls": [
+    {
+      "type": "Grid",
+      "gridRow": 0,
+      "margin": "10",
+      "columnDefinitions": [ "4*", "6*" ],
+      "contentControls": [
+        {
+          "type": "Border",
+          "gridColumn": 0,
+          "margin": "10",
+          "padding": "15",
+          "backgroundColor": "#26323D",
+          "borderColor": "#455A64",
+          "borderThickness": "1",
+          "contentControls": [
+            {
+              "type": "Grid",
+              "rowDefinitions": [ "auto", "*", "auto" ],
+              "contentControls": [
+                {
+                  "type": "TextBlock",
+                  "text": "Reagent Preparation",
+                  "fontSize": 20,
+                  "fontWeight": "SemiBold",
+                  "margin": "5,5,10,5",
+                  "foregroundColor": "#EBEFF5"
+                },
+                {
+                  "type": "Border",
+                  "gridRow": 1,
+                  "padding": "15",
+                  "backgroundColor": "#1A232E",
+                  "borderColor": "#455A64",
+                  "borderThickness": "1",
+                  "contentControls": [
+                    {
+                      "type": "TextBlock",
+                      "name": "InstructionsTextBlock",
+                      "text": "Master Mix (Sufficient for 100 reactions):\n\n1. Thaw 'Reagent A' (10x Buffer) and 'Enzyme B' on ice.\n2. In a sterile 1.5mL tube, add:\n    - 500 µL Nuclease-Free Water\n    - 100 µL Reagent A (10x Buffer)\n    -  50 µL dNTP Mix (10mM)\n    -  10 µL Enzyme B\n3. Vortex gently and spin down.\n4. Keep on ice until ready to plate.",
+                      "textWrapping": "Wrap",
+                      "fontSize": 14,
+                      "foregroundColor": "#EBEFF5"
+                    }
+                  ]
+                },
+                {
+                  "type": "WrapPanel",
+                  "gridRow": 2,
+                  "horizontalAlignment": "Left",
+                  "margin": "10,15,0,0",
+                  "contentControls": [
+                    {
+                      "type": "Button",
+                      "name": "PrintRecipeButton",
+                      "content": "Print Recipe",
+                      "action": "print_recipe",
+                      "pluginOwner": "PrepPlugin",
+                      "width": 140,
+                      "height": 35,
+                      "margin": "5",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "Button",
+                      "name": "CheckInventoryButton",
+                      "content": "Check Inventory",
+                      "action": "check_inventory",
+                      "pluginOwner": "PrepPlugin",
+                      "width": 140,
+                      "height": 35,
+                      "margin": "5",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "Button",
+                      "name": "StartTimerButton",
+                      "content": "Start 10min Timer",
+                      "action": "start_timer",
+                      "pluginOwner": "PrepPlugin",
+                      "width": 140,
+                      "height": 35,
+                      "margin": "5",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Border",
+          "gridColumn": 1,
+          "margin": "10",
+          "padding": "15",
+          "backgroundColor": "#26323D",
+          "borderColor": "#455A64",
+          "borderThickness": "1",
+          "contentControls": [
+            {
+              "type": "Grid",
+              "rowDefinitions": [ "auto", "*" ],
+              "contentControls": [
+                {
+                  "type": "TextBlock",
+                  "text": "Plate Setup (96-well)",
+                  "fontSize": 20,
+                  "fontWeight": "SemiBold",
+                  "margin": "5,5,10,5",
+                  "foregroundColor": "#EBEFF5"
+                },
+                {
+                  "type": "TitrationPlate",
+                  "gridRow": 1,
+                  "name": "MainPlate",
+                  "rows": 8,
+                  "columns": 12,
+                  "rowHeaders": [ "A", "B", "C", "D", "E", "F", "G", "H" ],
+                  "columnHeaders": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ],
+                  "wellSize": 50,
+                  "wellSpacing": 3,
+                  "headerFontSize": 12,
+                  "wellData": [
+                    {
+                      "row": 0,
+                      "column": 0,
+                      "label": "S1",
+                      "color": "#E0FFFF",
+                      "tooltip": "Sample 1"
+                    },
+                    {
+                      "row": 0,
+                      "column": 1,
+                      "label": "S2",
+                      "color": "#E0FFFF",
+                      "tooltip": "Sample 2"
+                    },
+                    {
+                      "row": 0,
+                      "column": 2,
+                      "label": "S3",
+                      "color": "#E0FFFF",
+                      "tooltip": "Sample 3"
+                    },
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "label": "S4",
+                      "color": "#E0FFFF",
+                      "tooltip": "Sample 4"
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "label": "S5",
+                      "color": "#E0FFFF",
+                      "tooltip": "Sample 5"
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "label": "S6",
+                      "color": "#E0FFFF",
+                      "tooltip": "Sample 6"
+                    },
+                    {
+                      "row": 0,
+                      "column": 10,
+                      "label": "+",
+                      "color": "#D7FFD7",
+                      "tooltip": "Positive Control"
+                    },
+                    {
+                      "row": 1,
+                      "column": 10,
+                      "label": "+",
+                      "color": "#D7FFD7",
+                      "tooltip": "Positive Control"
+                    },
+                    {
+                      "row": 0,
+                      "column": 11,
+                      "label": "-",
+                      "color": "#FFD7D7",
+                      "tooltip": "Negative Control"
+                    },
+                    {
+                      "row": 1,
+                      "column": 11,
+                      "label": "-",
+                      "color": "#FFD7D7",
+                      "tooltip": "Negative Control"
+                    }
+                  ],
+                  "wellDefaults": {
+                    "borderThickness": 1.0,
+                    "fontSize": 9.0,
+                    "fontWeight": "Normal",
+                    "fontColor": "#1A232E"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "name": "StatusTextBlock",
+      "text": "Status: Ready. Please review instructions and prepare the plate layout.",
+      "gridRow": 1,
+      "height": 40,
+      "padding": "10",
+      "backgroundColor": "#00BCD4",
+      "foregroundColor": "#1A232E",
+      "verticalAlignment": "Center"
+    }
+  ]
+}

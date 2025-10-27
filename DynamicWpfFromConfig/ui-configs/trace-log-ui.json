@@ -1,0 +1,349 @@
+﻿{
+  "window": {
+    "title": "TraceLogic - Direct View & Export Selection",
+    "minWidth": 150,
+    "minHeight": 550
+  },
+  "theme": {
+    "background": "#F0F2F5",
+    "foreground": "#1C1C1C",
+    "controlBackground": "#FFFFFF",
+    "accent": "#0078D7",
+    "accentForeground": "#FFFFFF",
+    "borderColor": "#CCCCCC",
+    "errorForeground": "#D32F2F"
+  },
+  "layoutDefinition": {
+    "columnDefinitions": [ "*" ],
+    "rowDefinitions": [
+      "auto",
+      "*",
+      "auto",
+      "auto"
+    ]
+  },
+  "controls": [
+    {
+      "type": "Border",
+      "gridRow": 0,
+      "gridColumn": 0,
+      "padding": "20",
+      "margin": "10,10,10,10",
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#DDDDDD",
+      "borderThickness": "1",
+      "contentControls": [
+        {
+          "type": "Grid",
+          "gridRow": 0,
+          "gridColumn": 0,
+          "columnDefinitions": [ "*", "auto" ],
+          "rowDefinitions": [ "auto", "auto" ],
+          "contentControls": [
+            {
+              "type": "TextBlock",
+              "text": "Trace File Importer",
+              "fontSize": 22,
+              "fontWeight": "SemiBold",
+              "gridRow": 0,
+              "gridColumn": 0,
+              "verticalAlignment": "Top"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Select a Hamilton Venus trace file (.trc) to begin analysis.",
+              "gridRow": 1,
+              "gridColumn": 0,
+              "margin": "0,5,0,0",
+              "verticalAlignment": "Top",
+              "foregroundColor": "#555555"
+            },
+            {
+              "type": "Button",
+              "name": "SelectFileButton",
+              "content": "Select .trc File",
+              "gridRow": 0,
+              "gridColumn": 1,
+              "gridRowSpan": 2,
+              "horizontalAlignment": "Right",
+              "verticalAlignment": "Center",
+              "fontSize": 16,
+              "width": 180,
+              "height": 30,
+              "action": "tracelogic_load",
+              "pluginOwner": "TraceLogic Analyzer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "name": "WelcomeMessage",
+      "text": "Please select a .trc file using the button above.",
+      "fontSize": 16,
+      "foregroundColor": "Gray",
+      "gridRow": 1,
+      "gridColumn": 0,
+      "horizontalAlignment": "Center",
+      "verticalAlignment": "Center",
+      "isVisible": true
+    },
+    {
+      "type": "DataGrid",
+      "name": "LiquidTransferGrid",
+      "gridRow": 1,
+      "gridColumn": 0,
+      "margin": "10,0,10,0",
+      "isVisible": false
+    },
+    {
+      "type": "Border",
+      "name": "ExportOptionsPanel",
+      "gridRow": 2,
+      "gridColumn": 0,
+      "margin": "10,10,10,10",
+      "padding": "10",
+      "backgroundColor": "#FAFAFA",
+      "borderColor": "#EEEEEE",
+      "borderThickness": "1",
+      "isVisible": false,
+      "contentControls": [
+        {
+          "type": "Grid",
+          "gridRow": 0,
+          "gridColumn": 0,
+          "rowDefinitions": [ "auto", "auto", "auto" ],
+          "columnDefinitions": [ "*" ],
+          "contentControls": [
+            {
+              "type": "TextBlock",
+              "text": "Select columns to export:",
+              "gridRow": 0,
+              "gridColumn": 0,
+              "margin": "0,0,0,10"
+            },
+            {
+              "type": "WrapPanel",
+              "name": "ColumnSelectorPanel",
+              "gridRow": 1,
+              "gridColumn": 0,
+              "margin": "0,0,0,10",
+              "contentControls": [
+                {
+                  "type": "CheckBox",
+                  "name": "chkCol_Timestamp",
+                  "content": "Timestamp",
+                  "isChecked": true,
+                  "margin": "0,0,15,5",
+                  "tag": "Timestamp",
+                  "events": [
+                    {
+                      "on": "Checked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    },
+                    {
+                      "on": "Unchecked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    }
+                  ]
+                },
+                {
+                  "type": "CheckBox",
+                  "name": "chkCol_SourceLabware",
+                  "content": "Source Labware",
+                  "isChecked": true,
+                  "margin": "0,0,15,5",
+                  "tag": "SourceLabware",
+                  "events": [
+                    {
+                      "on": "Checked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    },
+                    {
+                      "on": "Unchecked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    }
+                  ]
+                },
+                {
+                  "type": "CheckBox",
+                  "name": "chkCol_SourcePosition",
+                  "content": "Source Position",
+                  "isChecked": true,
+                  "margin": "0,0,15,5",
+                  "tag": "SourcePositionId",
+                  "events": [
+                    {
+                      "on": "Checked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    },
+                    {
+                      "on": "Unchecked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    }
+                  ]
+                },
+                {
+                  "type": "CheckBox",
+                  "name": "chkCol_TargetLabware",
+                  "content": "Target Labware",
+                  "isChecked": true,
+                  "margin": "0,0,15,5",
+                  "tag": "TargetLabware",
+                  "events": [
+                    {
+                      "on": "Checked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    },
+                    {
+                      "on": "Unchecked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    }
+                  ]
+                },
+                {
+                  "type": "CheckBox",
+                  "name": "chkCol_TargetPosition",
+                  "content": "Target Position",
+                  "isChecked": true,
+                  "margin": "0,0,15,5",
+                  "tag": "TargetPositionId",
+                  "events": [
+                    {
+                      "on": "Checked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    },
+                    {
+                      "on": "Unchecked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    }
+                  ]
+                },
+                {
+                  "type": "CheckBox",
+                  "name": "chkCol_Volume",
+                  "content": "Volume (uL)",
+                  "isChecked": true,
+                  "margin": "0,0,15,5",
+                  "tag": "Volume",
+                  "events": [
+                    {
+                      "on": "Checked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    },
+                    {
+                      "on": "Unchecked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    }
+                  ]
+                },
+                {
+                  "type": "CheckBox",
+                  "name": "chkCol_TipLabware",
+                  "content": "Tip Labware",
+                  "isChecked": false,
+                  "margin": "0,0,15,5",
+                  "tag": "TipLabwareId",
+                  "events": [
+                    {
+                      "on": "Checked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    },
+                    {
+                      "on": "Unchecked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    }
+                  ]
+                },
+                {
+                  "type": "CheckBox",
+                  "name": "chkCol_TipPosition",
+                  "content": "Tip Position",
+                  "isChecked": false,
+                  "margin": "0,0,15,5",
+                  "tag": "TipPositionId",
+                  "events": [
+                    {
+                      "on": "Checked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    },
+                    {
+                      "on": "Unchecked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    }
+                  ]
+                },
+                {
+                  "type": "CheckBox",
+                  "name": "chkCol_Channel",
+                  "content": "Channel",
+                  "isChecked": true,
+                  "margin": "0,0,15,5",
+                  "tag": "ChannelId",
+                  "events": [
+                    {
+                      "on": "Checked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    },
+                    {
+                      "on": "Unchecked",
+                      "action": "toggleGridColumnVisibility",
+                      "actionTarget": "LiquidTransferGrid"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "name": "ExportButton",
+              "content": "Export Selected Columns...",
+              "gridRow": 2,
+              "gridColumn": 0,
+              "action": "tracelogic_export",
+              "pluginOwner": "TraceLogic Analyzer",
+              "width": 200,
+              "height": 30,
+              "horizontalAlignment": "Left"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "name": "StatusTextBlock",
+      "text": "Ready. Please select a trace file.",
+      "gridRow": 3,
+      "gridColumn": 0,
+      "height": 25,
+      "padding": "5",
+      "backgroundColor": "Green",
+      "foregroundColor": "White",
+      "verticalAlignment": "Center"
+    },
+    {
+      "type": "TextBox",
+      "name": "statusFilePath",
+      "isVisible": false
+    }
+  ]
+}

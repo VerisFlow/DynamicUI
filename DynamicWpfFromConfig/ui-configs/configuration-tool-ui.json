@@ -1,0 +1,218 @@
+﻿{
+  "window": {
+    "title": "Application Configuration & Setup",
+    "width": 850,
+    "height": 600,
+    "minWidth": 650,
+    "minHeight": 500
+  },
+  "theme": {
+    "background": "#F4F7F9",
+    "foreground": "#34495E",
+    "controlBackground": "#FFFFFF",
+    "accent": "#3498DB",
+    "accentForeground": "#FFFFFF",
+    "borderColor": "#E0E6EF",
+    "errorForeground": "#E74C3C"
+  },
+  "layoutDefinition": {
+    "columnDefinitions": [ "2*", "3*" ],
+    "rowDefinitions": [
+      "auto",
+      "*",
+      "auto"
+    ]
+  },
+  "controls": [
+    {
+      "type": "Border",
+      "gridRow": 0,
+      "gridColumn": 0,
+      "gridColumnSpan": 2,
+      "padding": "15",
+      "borderColor": "#E0E6EF",
+      "borderThickness": "0,0,0,1",
+      "contentControls": [
+        {
+          "type": "Grid",
+          "columnDefinitions": [ "auto", "*" ],
+          "contentControls": [
+            {
+              "type": "Image",
+              "source": "resources/config_icon.png",
+              "width": 32,
+              "height": 32,
+              "margin": "0,0,15,0"
+            },
+            {
+              "type": "TextBlock",
+              "text": "System Configuration Utility",
+              "fontSize": 20,
+              "fontWeight": "SemiBold",
+              "gridColumn": 1,
+              "verticalAlignment": "Center"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "Border",
+      "gridRow": 1,
+      "gridColumn": 0,
+      "margin": "15,15,5,15",
+      "padding": "20",
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#E0E6EF",
+      "borderThickness": "1",
+      "contentControls": [
+        {
+          "type": "Grid",
+          "name": "ConfigurationGrid",
+          "rowDefinitions": [ "auto", "auto", "auto", "auto", "auto", "auto", "auto", "auto", "auto", "auto" ],
+          "contentControls": [
+            {
+              "type": "TextBlock",
+              "text": "Configuration Switches",
+              "fontSize": 16,
+              "fontWeight": "SemiBold",
+              "gridRow": 0,
+              "margin": "0,0,0,10"
+            },
+            {
+              "type": "CheckBox",
+              "name": "chkLogging",
+              "content": "Enable detailed error logging",
+              "isChecked": true,
+              "gridRow": 1,
+              "margin": "0,5,0,5"
+            },
+            {
+              "type": "CheckBox",
+              "name": "chkDarkMode",
+              "content": "Use dark mode theme",
+              "isChecked": false,
+              "gridRow": 2,
+              "margin": "0,5,0,5"
+            },
+            {
+              "type": "CheckBox",
+              "name": "chkAutoUpdate",
+              "content": "Enable automatic updates",
+              "isChecked": true,
+              "gridRow": 3,
+              "margin": "0,5,0,20"
+            },
+
+            {
+              "type": "TextBlock",
+              "text": "Service Selection",
+              "fontSize": 16,
+              "fontWeight": "SemiBold",
+              "gridRow": 4,
+              "margin": "0,10,0,10"
+            },
+            {
+              "type": "ComboBox",
+              "name": "ddlDataService",
+              "items": [ "SQL Server (Primary)", "PostgreSQL (Backup)", "Local File Cache" ],
+              "defaultSelection": "SQL Server (Primary)",
+              "gridRow": 5,
+              "margin": "0,5,0,5"
+            },
+            {
+              "type": "ComboBox",
+              "name": "ddlEnvironment",
+              "items": [ "Development", "Staging", "Production" ],
+              "defaultSelection": "Development",
+              "gridRow": 6,
+              "margin": "0,5,0,5"
+            }
+            ]
+        }
+      ]
+    },
+
+    {
+      "type": "Border",
+      "gridRow": 1,
+      "gridColumn": 1,
+      "margin": "5,15,15,15",
+      "padding": "20",
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#E0E6EF",
+      "borderThickness": "1",
+      "contentControls": [
+        {
+          "type": "Grid",
+          "rowDefinitions": [ "auto", "auto", "auto", "*", "auto" ],
+          "contentControls": [
+            {
+              "type": "TextBlock",
+              "text": "Connection Details",
+              "fontSize": 16,
+              "fontWeight": "SemiBold",
+              "margin": "0,0,0,10"
+            },
+            {
+              "type": "TextBox",
+              "name": "txtServerAddress",
+              "text": "Server Address: 192.168.1.10",
+              "gridRow": 1,
+              "margin": "0,0,0,10"
+            },
+            {
+              "type": "TextBox",
+              "name": "txtPort",
+              "text": "Port: 5432",
+              "gridRow": 2,
+              "margin": "0,0,0,20"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Current Status (Read-Only)",
+              "fontSize": 16,
+              "fontWeight": "SemiBold",
+              "gridRow": 3,
+              "verticalAlignment": "Top",
+              "margin": "0,0,0,10"
+            },
+            {
+              "type": "TextBox",
+              "name": "txtStatusOutput",
+              "gridRow": 4,
+              "text": "Status: Configuration loaded. Ready to apply changes.",
+              "isReadOnly": true,
+              "textWrapping": "Wrap",
+              "backgroundColor": "#F7F9FC"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "Border",
+      "gridRow": 2,
+      "gridColumn": 0,
+      "gridColumnSpan": 2,
+      "padding": "10",
+      "backgroundColor": "#F7F9FC",
+      "borderColor": "#E0E6EF",
+      "borderThickness": "1,0,0,0",
+      "contentControls": [
+        {
+          "type": "Button",
+          "content": "Save Changes",
+          "action": "config_save",
+          "pluginOwner": "ConfigManager",
+          "width": 150,
+          "height": 35,
+          "horizontalAlignment": "Right",
+          "margin": "5,0,10,0"
+        }
+      ]
+    }
+  ]
+}

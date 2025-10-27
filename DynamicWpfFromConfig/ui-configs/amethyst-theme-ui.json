@@ -1,0 +1,292 @@
+﻿{
+  "window": {
+    "title": "Aura Automation Platform (Sapphire Edition)",
+    "width": 1200,
+    "height": 768,
+    "minWidth": 900,
+    "minHeight": 600
+  },
+  "theme": {
+    "background": "#F7F5F9",
+    "foreground": "#332E3A",
+    "controlBackground": "#FFFFFF",
+    "accent": "#8E44AD",
+    "accentForeground": "#FFFFFF",
+    "borderColor": "#DCD0E6",
+    "errorForeground": "#D32F2F"
+  },
+  "layoutDefinition": {
+    "columnDefinitions": [ "*" ],
+    "rowDefinitions": [
+      "auto",
+      "auto",
+      "*",
+      "auto"
+    ]
+  },
+  "controls": [
+    {
+      "type": "Border",
+      "gridRow": 0,
+      "height": 60,
+      "padding": "15,20,15,20",
+      "backgroundColor": "#8E44AD",
+      "contentControls": [
+        {
+          "type": "TextBlock",
+          "text": "Aura Automation Platform",
+          "fontSize": 22,
+          "fontWeight": "SemiBold",
+          "foregroundColor": "#FFFFFF",
+          "verticalAlignment": "Center"
+        }
+      ]
+    },
+    {
+      "type": "Border",
+      "gridRow": 1,
+      "margin": "20, 20, 10, 20",
+      "padding": "15",
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#DCD0E6",
+      "borderThickness": "1",
+      "contentControls": [
+        {
+          "type": "Grid",
+          "verticalAlignment": "Center",
+          "columnDefinitions": [ "auto", "300", "*", "auto", "auto", "auto" ],
+          "contentControls": [
+            {
+              "type": "TextBlock",
+              "text": "Protocol:",
+              "fontSize": 14,
+              "fontWeight": "SemiBold",
+              "gridColumn": 0,
+              "verticalAlignment": "Center",
+              "margin": "0,0,15,0"
+            },
+            {
+              "type": "ComboBox",
+              "name": "ProtocolSelector",
+              "gridColumn": 1,
+              "height": 35,
+              "verticalAlignment": "Center",
+              "items": [
+                "Protocol Alpha",
+                "Protocol Beta",
+                "Normalization Workflow"
+              ],
+              "defaultSelection": "Protocol Alpha"
+            },
+            {
+              "type": "Button",
+              "name": "RunButton",
+              "content": "Run",
+              "action": "protocol_run",
+              "pluginOwner": "AutomationController",
+              "gridColumn": 3,
+              "height": 35,
+              "width": 100,
+              "margin": "2,0,2,2"
+            },
+            {
+              "type": "Button",
+              "name": "PauseButton",
+              "content": "Pause",
+              "action": "protocol_pause",
+              "pluginOwner": "AutomationController",
+              "gridColumn": 4,
+              "height": 35,
+              "width": 100,
+              "margin": "2",
+              "backgroundColor": "#F39C12"
+            },
+            {
+              "type": "Button",
+              "name": "AbortButton",
+              "content": "Abort",
+              "action": "protocol_abort",
+              "pluginOwner": "AutomationController",
+              "gridColumn": 5,
+              "height": 35,
+              "width": 100,
+              "margin": "2",
+              "backgroundColor": "#D32F2F"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TabControl",
+      "gridRow": 2,
+      "margin": "0, 20, 10, 20",
+      "tabItems": [
+        {
+          "header": "Deck Overview",
+          "contentControls": [
+            {
+              "type": "Grid",
+              "margin": "10",
+              "columnDefinitions": [ "*", "200" ],
+              "contentControls": [
+                {
+                  "type": "TitrationPlate",
+                  "gridColumn": 0,
+                  "name": "DeckLayoutGrid",
+                  "rows": 4,
+                  "columns": 6,
+                  "rowHeaders": [ "A", "B", "C", "D" ],
+                  "columnHeaders": [ "1", "2", "3", "4", "5", "6" ],
+                  "wellSize": 100,
+                  "wellSpacing": 5,
+                  "headerFontSize": 14,
+                  "headerFontWeight": "Bold",
+                  "wellData": [
+                    {
+                      "row": 0,
+                      "column": 0,
+                      "label": "Tips (200µL)",
+                      "color": "#E8DAF1",
+                      "tooltip": "Box of 200uL Tips"
+                    },
+                    {
+                      "row": 0,
+                      "column": 1,
+                      "label": "Tips (50µL)",
+                      "color": "#E8DAF1",
+                      "tooltip": "Box of 50uL Tips"
+                    },
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "label": "Reagent Trough",
+                      "color": "#D1C4E9",
+                      "tooltip": "Reagent Trough"
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "label": "Source Plate",
+                      "color": "#EDE7F6",
+                      "tooltip": "Sample Source Plate"
+                    },
+                    {
+                      "row": 2,
+                      "column": 3,
+                      "label": "Dest. Plate",
+                      "color": "#EDE7F6",
+                      "tooltip": "Destination Plate"
+                    },
+                    {
+                      "row": 3,
+                      "column": 5,
+                      "label": "Waste",
+                      "color": "#F3E5F5",
+                      "tooltip": "Liquid Waste"
+                    }
+                  ],
+                  "wellDefaults": {
+                    "borderThickness": 1.0,
+                    "fontSize": 9.0,
+                    "fontWeight": "Normal",
+                    "fontColor": "#332E3A"
+                  }
+                },
+                {
+                  "gridColumn": 1,
+                  "padding": "10",
+                  "margin": "10,0,0,0",
+                  "backgroundColor": "#FFFFFF",
+                  "borderColor": "#EAE4F0",
+                  "borderThickness": "1",
+                  "contentControls": [
+                    {
+                      "type": "Grid",
+                      "rowDefinitions": [ "auto", "auto", "auto", "auto", "auto", "auto" ],
+                      "contentControls": [
+                        {
+                          "type": "TextBlock",
+                          "text": "Deck Legend",
+                          "fontSize": 16,
+                          "fontWeight": "Bold",
+                          "margin": "0,0,0,10"
+                        },
+                        {
+                          "type": "TextBlock",
+                          "text": "• Tips (200/50µL)",
+                          "gridRow": 1,
+                          "margin": "5"
+                        },
+                        {
+                          "type": "TextBlock",
+                          "text": "• Reagent Trough",
+                          "gridRow": 2,
+                          "margin": "5"
+                        },
+                        {
+                          "type": "TextBlock",
+                          "text": "• Source Plate",
+                          "gridRow": 3,
+                          "margin": "5"
+                        },
+                        {
+                          "type": "TextBlock",
+                          "text": "• Destination Plate",
+                          "gridRow": 4,
+                          "margin": "5"
+                        },
+                        {
+                          "type": "TextBlock",
+                          "text": "• Waste",
+                          "gridRow": 5,
+                          "margin": "5"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "header": "Sample Manifest",
+          "contentControls": [
+            {
+              "type": "DataGrid",
+              "name": "SampleSheetGrid",
+              "margin": "10"
+            }
+          ]
+        },
+        {
+          "header": "Run Log",
+          "contentControls": [
+            {
+              "type": "ListBox",
+              "name": "RunLogList",
+              "margin": "10",
+              "items": [
+                "[14:30:01] Run Started: Protocol Alpha",
+                "[14:30:05] Initializing pipettor...",
+                "[14:30:10] Loading tips from Rack 1..."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "name": "StatusTextBlock",
+      "text": "Status: Idle. Load a protocol to begin.",
+      "gridRow": 3,
+      "height": 40,
+      "padding": "10",
+      "backgroundColor": "#4A3C54",
+      "foregroundColor": "#F7F5F9",
+      "verticalAlignment": "Center"
+    }
+  ]
+}

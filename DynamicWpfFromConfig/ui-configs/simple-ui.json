@@ -1,0 +1,227 @@
+﻿{
+  "window": {
+    "title": "NGS - Library Prep (Test Config)",
+    "width": 600,
+    "height": 370
+  },
+  "theme": {
+    "background": "#FFF0F0F0",
+    "foreground": "#FF000000",
+    "controlBackground": "#FFFFFFFF",
+    "accent": "#FF008060",
+    "accentForeground": "#FFFFFFFF",
+    "borderColor": "#FFCCCCCC",
+    "errorForeground": "#FFCF6679"
+  },
+  "layoutDefinition": {
+    "rowDefinitions": [
+      "Auto",
+      "Auto"
+    ]
+  },
+  "dataExport": {
+    "targetFile": "run-config.csv",
+    "delimiter": ",",
+    "includeHeaders": true,
+    "writeMode": "overwrite",
+    "mappings": [
+      {
+        "columnHeader": "Enable_LibPrep",
+        "sourceControlName": "LibPrep_Enable"
+      },
+      {
+        "columnHeader": "Enable_LibPrep_QC1",
+        "sourceControlName": "LibPrep_QC1"
+      },
+      {
+        "columnHeader": "Enable_LibPrep_EndRepair",
+        "sourceControlName": "LibPrep_EndRepair"
+      },
+      {
+        "columnHeader": "Enable_LibPrep_Ligation",
+        "sourceControlName": "LibPrep_Ligation"
+      },
+      {
+        "columnHeader": "Volume_EndRepairMix_uL",
+        "sourceControlName": "LibPrep_Vol_EndRepair"
+      },
+      {
+        "columnHeader": "Volume_LigationMix_uL",
+        "sourceControlName": "LibPrep_Vol_Ligation"
+      }
+    ]
+  },
+  "controls": [
+    {
+      "type": "Grid",
+      "gridRow": 0,
+      "margin": "5",
+      "columnDefinitions": [
+        "Auto",
+        "*"
+      ],
+      "rowDefinitions": [
+        "Auto",
+        "Auto",
+        "Auto"
+      ],
+      "contentControls": [
+        {
+          "type": "CheckBox",
+          "name": "LibPrep_Enable",
+          "content": "Enable Library Prep Workflow",
+          "gridRow": 0,
+          "gridColumn": 0,
+          "columnSpan": 2,
+          "isBold": true,
+          "margin": "5"
+        },
+        {
+          "type": "Border",
+          "gridRow": 1,
+          "gridColumn": 0,
+          "columnSpan": 2,
+          "margin": "5",
+          "padding": "5",
+          "backgroundColor": "#FFFFFFFF",
+          "contentControls": [
+            {
+              "type": "Grid",
+              "columnDefinitions": [
+                "*"
+              ],
+              "rowDefinitions": [
+                "Auto",
+                "Auto",
+                "Auto",
+                "Auto"
+              ],
+              "contentControls": [
+                {
+                  "type": "TextBlock",
+                  "text": "Workflow Steps",
+                  "isBold": true,
+                  "margin": "0,0,0,5"
+                },
+                {
+                  "type": "CheckBox",
+                  "name": "LibPrep_QC1",
+                  "content": "Step 1: Quality Control (QC)",
+                  "gridRow": 1,
+                  "margin": "10,5,5,5"
+                },
+                {
+                  "type": "CheckBox",
+                  "name": "LibPrep_EndRepair",
+                  "content": "Step 2: End Repair & A-Tailing",
+                  "gridRow": 2,
+                  "margin": "10,5,5,5"
+                },
+                {
+                  "type": "CheckBox",
+                  "name": "LibPrep_Ligation",
+                  "content": "Step 3: Adapter Ligation",
+                  "gridRow": 3,
+                  "margin": "10,5,5,5"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Border",
+          "gridRow": 2,
+          "gridColumn": 0,
+          "columnSpan": 2,
+          "margin": "5",
+          "padding": "5",
+          "backgroundColor": "#FFFFFFFF",
+          "contentControls": [
+            {
+              "type": "Grid",
+              "columnDefinitions": [
+                "Auto",
+                "*"
+              ],
+              "rowDefinitions": [
+                "Auto",
+                "Auto",
+                "Auto"
+              ],
+              "contentControls": [
+                {
+                  "type": "TextBlock",
+                  "text": "Reagent Volumes",
+                  "isBold": true,
+                  "margin": "0,0,0,5"
+                },
+                {
+                  "type": "Label",
+                  "content": "End Repair Mix (µL):",
+                  "gridRow": 1,
+                  "verticalAlignment": "Center"
+                },
+                {
+                  "type": "TextBox",
+                  "name": "LibPrep_Vol_EndRepair",
+                  "text": "5.0",
+                  "gridRow": 1,
+                  "gridColumn": 1,
+                  "margin": "5"
+                },
+                {
+                  "type": "Label",
+                  "content": "Ligation Mix (µL):",
+                  "gridRow": 2,
+                  "verticalAlignment": "Center"
+                },
+                {
+                  "type": "TextBox",
+                  "name": "LibPrep_Vol_Ligation",
+                  "text": "15.0",
+                  "gridRow": 2,
+                  "gridColumn": 1,
+                  "margin": "5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Grid",
+      "gridRow": 1,
+      "margin": "10",
+      "columnDefinitions": [
+        "Auto",
+        "*"
+      ],
+      "rowDefinitions": [
+        "Auto"
+      ],
+      "contentControls": [
+        {
+          "type": "WrapPanel",
+          "gridRow": 2,
+          "gridColumn": 0,
+          "columnSpan": 2,
+          "horizontalAlignment": "Center",
+          "margin": "20,10,10,10",
+          "contentControls": [
+            {
+              "type": "Button",
+              "content": "Next",
+              "action": "exportdata",
+              "margin": "5",
+              "width": 120,
+              "height": 30,
+              "backgroundColor": "accent",
+              "foregroundColor": "accentForeground"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

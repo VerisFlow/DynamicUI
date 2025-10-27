@@ -1,0 +1,113 @@
+# ===================================================================
+#
+#   .gitignore for WPF (.NET) Projects
+#
+# ===================================================================
+
+# -------------------------------------------------------------------
+#   1. OS and IDE specific files
+# -------------------------------------------------------------------
+
+# Windows thumbnail cache
+Thumbs.db
+ehthumbs.db
+
+# JetBrains Rider & Resharper specific files
+*.resharper
+_ReSharper*
+*.sln.DotSettings.user
+
+# Visual Studio specific files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code specific files
+.vscode/
+
+# -------------------------------------------------------------------
+#   2. Build artifacts and compiled output
+# -------------------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Rr]elease/
+[Dd]ebug/
+x64/
+x86/
+build/
+Build/
+bld/
+[Bb]uild[Ss]ystem/
+artifacts/
+
+# -------------------------------------------------------------------
+#   3. Runtime and debug files
+# -------------------------------------------------------------------
+*.log
+*.log.*
+*.pdb
+*.exe
+*.dll
+*.aps
+*.ncb
+*.tlog
+*.ipch
+
+# -------------------------------------------------------------------
+#   4. Configuration files and User data
+# -------------------------------------------------------------------
+# It's recommended to commit a template/default config file 
+# (e.g., ui-config.template.json) and ignore the local one to avoid 
+# overwriting team members' local settings.
+# Uncomment the line below if your config file contains sensitive data.
+# ui-config.json
+
+# Post-build application configuration files
+App.config
+app.config
+App.Debug.config
+App.Release.config
+ConnectionStrings.config
+
+# -------------------------------------------------------------------
+#   5. Packages and dependencies
+# -------------------------------------------------------------------
+# Packages downloaded via package managers like NuGet or Paket.
+packages/
+*.nupkg
+*.nuget.props
+*.nuget.targets
+
+# -------------------------------------------------------------------
+#   6. Testing and code analysis results
+# -------------------------------------------------------------------
+TestResults/
+*.CodeAnalysisLog.xml
+*.coverage
+*.coveragexml
+*.trx
+
+# -------------------------------------------------------------------
+#   7. Miscellaneous tools and files
+# -------------------------------------------------------------------
+# Visual Studio profiler files
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# ClickOnce deployment files
+publish/
+*.application
+*.deploy
+
+# Certificate files
+*.pfx
+*.p12
+*.key
+
+# Version control system folders (e.g., from macOS)
+.DS_Store
+/Output

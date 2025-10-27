@@ -1,0 +1,268 @@
+﻿{
+  "window": {
+    "title": "Quantum Diagnostics Console",
+    "width": 1400,
+    "height": 800,
+    "minWidth": 1000,
+    "minHeight": 650
+  },
+  "theme": {
+    "background": "#121212",
+    "foreground": "#E0E0E0",
+    "controlBackground": "#282828",
+    "accent": "#00FF88",
+    "accentForeground": "#121212",
+    "borderColor": "#007744",
+    "errorForeground": "#FF6666"
+  },
+  "layoutDefinition": {
+    "columnDefinitions": [ "auto", "*", "auto" ],
+    "rowDefinitions": [
+      "auto",
+      "*",
+      "auto"
+    ]
+  },
+  "controls": [
+    {
+      "type": "TextBlock",
+      "gridRow": 0,
+      "gridColumn": 0,
+      "gridColumnSpan": 3,
+      "text": "DIAGNOSTIC OVERLAY | SYSTEM STATUS: ACTIVE",
+      "fontSize": 14,
+      "foregroundColor": "#00FF88",
+      "backgroundColor": "#181818",
+      "padding": "10,20,10,20"
+    },
+    {
+      "type": "Border",
+      "gridRow": 1,
+      "gridColumn": 0,
+      "margin": "10,0,5,10",
+      "padding": "15",
+      "backgroundColor": "#181818",
+      "borderColor": "#007744",
+      "borderThickness": "1",
+      "contentControls": [
+        {
+          "type": "Grid",
+          "rowDefinitions": [ "auto", "auto", "auto", "*" ],
+          "contentControls": [
+            {
+              "type": "TextBlock",
+              "text": "SENSOR ARRAY STATUS",
+              "fontSize": 18,
+              "fontWeight": "SemiBold",
+              "foregroundColor": "#00FF88",
+              "margin": "0,0,0,15"
+            },
+            {
+              "type": "TextBlock",
+              "gridRow": 1,
+              "text": "Ambient Temp: 23.1 C [RISING]",
+              "foregroundColor": "#FFCC00",
+              "margin": "0,0,0,5"
+            },
+            {
+              "type": "TextBlock",
+              "gridRow": 2,
+              "text": "Humidity: 44.7%",
+              "foregroundColor": "#E0E0E0",
+              "margin": "0,0,0,5"
+            },
+            {
+              "type": "ListBox",
+              "gridRow": 3,
+              "name": "LiveFeedLog",
+              "margin": "0,15,0,15",
+              "backgroundColor": "#121212",
+              "borderColor": "#007744",
+              "items": [
+                " [0.01s] Pressure OK",
+                " [0.02s] Flow Rate 300uL/s",
+                " [0.03s] Valve 4 Open",
+                " [0.04s] Pump Cycle A/B Complete",
+                " [0.05s] Waiting on Position 3..."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Border",
+      "gridRow": 1,
+      "gridColumn": 1,
+      "margin": "5,10,5,10",
+      "padding": "30",
+      "backgroundColor": "#282828",
+      "borderColor": "#00FF88",
+      "borderThickness": "2",
+      "contentControls": [
+        {
+          "type": "Grid",
+          "rowDefinitions": [ "auto", "*" ],
+          "contentControls": [
+            {
+              "type": "Grid",
+              "rowDefinitions": [ "auto", "auto" ],
+              "columnDefinitions": [ "*", "*", "auto" ],
+              "margin": "0,0,0,20",
+              "contentControls": [
+                {
+                  "type": "TextBlock",
+                  "text": "PROTOCOLS (RUNNING)",
+                  "fontSize": 24,
+                  "fontWeight": "Bold",
+                  "foregroundColor": "#00FF88"
+                },
+                {
+                  "type": "ComboBox",
+                  "name": "ProtocolSelect",
+                  "gridRow": 1,
+                  "items": ["PCR Seq 1", "ELISA HTS", "Compound Screen"],
+                  "defaultSelection": "PCR Seq 1",
+                  "backgroundColor": "#121212",
+                  "foregroundColor": "#E0E0E0"
+                },
+                {
+                  "type": "Button",
+                  "content": "PAUSE",
+                  "gridRow": 0,
+                  "gridColumn": 2,
+                  "gridRowSpan": 2,
+                  "width": 120,
+                  "height": 50,
+                  "action": "system_pause",
+                  "pluginOwner": "Quantum",
+                  "fontSize": 20,
+                  "fontWeight": "Bold",
+                  "backgroundColor": "#F39C12",
+                  "accentForeground": "#121212"
+                }
+              ]
+            },
+            {
+              "type": "TitrationPlate",
+              "gridRow": 1,
+              "name": "RealTimePlate",
+              "rows": 8,
+              "columns": 12,
+              "rowHeaders": [ "A", "B", "C", "D", "E", "F", "G", "H" ],
+              "columnHeaders": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ],
+              "wellSize": 50,
+              "wellSpacing": 3,
+              "headerFontSize": 12,
+              "headerFontWeight": "Bold",
+              "wellData": [
+                { "row": 0, "column": 0, "label": "0.45", "color": "#00FF88", "tooltip": "Status: Active Transfer (A1)", "fontColor": "#121212" },
+                { "row": 0, "column": 1, "label": "0.32", "color": "#005500", "tooltip": "Status: Complete (A2)", "fontColor": "#00FF88" },
+                { "row": 0, "column": 2, "label": "0.00", "color": "#003300", "tooltip": "Status: Complete (A3)", "fontColor": "#00FF88" },
+                { "row": 0, "column": 3, "label": "INIT", "color": "#555500", "tooltip": "Status: Initializing (A4)", "fontColor": "#FFFF00" },
+                { "row": 1, "column": 0, "label": "NEXT", "color": "#333333", "tooltip": "Status: Queued (B1)", "fontColor": "#AAAAAA" },
+                { "row": 7, "column": 11, "label": "IDLE", "color": "#222222", "tooltip": "Status: Idle (H12)", "fontColor": "#AAAAAA" }
+              ],
+              "wellDefaults": {
+                "borderThickness": 1.0,
+                "fontSize": 9.0,
+                "fontWeight": "Normal",
+                "fontColor": "#E0E0E0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Border",
+      "gridRow": 1,
+      "gridColumn": 2,
+      "margin": "5,0,10,10",
+      "padding": "15",
+      "backgroundColor": "#181818",
+      "borderColor": "#007744",
+      "borderThickness": "1",
+      "contentControls": [
+        {
+          "type": "Grid",
+          "rowDefinitions": [ "auto", "auto", "auto", "auto", "*" ],
+          "contentControls": [
+            {
+              "type": "TextBlock",
+              "text": "CRITICAL KPIs",
+              "fontSize": 18,
+              "fontWeight": "SemiBold",
+              "foregroundColor": "#00FF88",
+              "margin": "0,0,0,15"
+            },
+            {
+              "type": "TextBlock",
+              "gridRow": 1,
+              "text": "• Time Elapsed: 00:12:48",
+              "foregroundColor": "#00FF88",
+              "margin": "0,0,0,5"
+            },
+            {
+              "type": "TextBlock",
+              "gridRow": 2,
+              "text": "• Tips Remaining: 890 (OK)",
+              "foregroundColor": "#E0E0E0",
+              "margin": "0,0,0,20"
+            },
+            {
+              "type": "TextBlock",
+              "gridRow": 3,
+              "text": "SYSTEM LOGS",
+              "fontSize": 16,
+              "fontWeight": "SemiBold",
+              "foregroundColor": "#E0E0E0",
+              "margin": "0,0,0,5"
+            },
+            {
+              "type": "ListBox",
+              "gridRow": 4,
+              "name": "SystemLogs",
+              "margin": "0,0,0,0",
+              "backgroundColor": "#121212",
+              "borderColor": "#007744",
+              "items": [
+                " [INIT] System startup complete.",
+                " [WARN] Liquid level low in Trough B.",
+                " [ERROR] Homing sequence failed!",
+                " [EXEC] Started step: Transfer Mix."
+              ],
+              "logColorMap": [
+                {
+                  "prefix": "[WARN]",
+                  "color": "#FFCC00"
+                },
+                {
+                  "prefix": "[ERROR]",
+                  "color": "#FF5252"
+                },
+                {
+                  "prefix": "[EXEC]",
+                  "color": "#00BCD4"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "name": "AlertFooter",
+      "gridRow": 2,
+      "gridColumn": 0,
+      "gridColumnSpan": 3,
+      "text": "ALERT: WARNING - LIQUID LEVEL LOW IN TROUGH B.",
+      "fontSize": 14,
+      "foregroundColor": "#121212",
+      "backgroundColor": "#FFCC00",
+      "padding": "10,20,10,20",
+      "horizontalAlignment": "Center"
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+﻿{
+  "window": {
+    "title": "IT Support Ticket Logger",
+    "width": 650,
+    "height": 500,
+    "minWidth": 500,
+    "minHeight": 400
+  },
+  "theme": {
+    "background": "#F0F0F0",
+    "foreground": "#000000",
+    "controlBackground": "#FFFFFF",
+    "accent": "#D83B01",
+    "accentForeground": "#FFFFFF"
+  },
+  "layoutDefinition": {
+    "columnDefinitions": [
+      "*"
+    ],
+    "rowDefinitions": [
+      "*",
+      "Auto"
+    ]
+  },
+  "dataExport": {
+    "targetFileFromControl": "logFilePathBox",
+    "delimiter": ",",
+    "includeHeaders": true,
+    "writeMode": "append",
+    "mappings": [
+      {
+        "columnHeader": "CustomerName",
+        "sourceControlName": "customerNameBox"
+      },
+      {
+        "columnHeader": "CustomerEmail",
+        "sourceControlName": "customerEmailBox"
+      },
+      {
+        "columnHeader": "Priority",
+        "sourceControlName": "priorityComboBox"
+      },
+      {
+        "columnHeader": "Category",
+        "sourceControlName": "categoryComboBox"
+      },
+      {
+        "columnHeader": "Description",
+        "sourceControlName": "descriptionBox"
+      }
+    ]
+  },
+  "controls": [
+    {
+      "type": "Border",
+      "name": "FormContainer",
+      "gridRow": 0,
+      "gridColumn": 0,
+      "margin": "10",
+      "padding": "10",
+      "backgroundColor": "#FFFFFF",
+      "borderThickness": "1",
+      "borderColor": "#CCCCCC",
+      "contentControls": [
+        {
+          "type": "Grid",
+          "name": "TicketFormGrid",
+          "columnDefinitions": [
+            "Auto",
+            "*"
+          ],
+          "rowDefinitions": [
+            "Auto",
+            "Auto",
+            "Auto",
+            "Auto",
+            "*"
+          ],
+          "contentControls": [
+            {
+              "type": "Label",
+              "content": "Customer Name:",
+              "gridRow": 0,
+              "gridColumn": 0,
+              "margin": "5",
+              "verticalAlignment": "Center"
+            },
+            {
+              "type": "TextBox",
+              "name": "customerNameBox",
+              "gridRow": 0,
+              "gridColumn": 1,
+              "margin": "5",
+              "borderColor": "#000000",
+              "borderThickness": "1"
+            },
+            {
+              "type": "Label",
+              "content": "Customer Email:",
+              "gridRow": 1,
+              "gridColumn": 0,
+              "margin": "5",
+              "verticalAlignment": "Center"
+            },
+            {
+              "type": "TextBox",
+              "name": "customerEmailBox",
+              "gridRow": 1,
+              "gridColumn": 1,
+              "margin": "5",
+              "borderColor": "#000000",
+              "borderThickness": "1"
+            },
+            {
+              "type": "Label",
+              "content": "Priority:",
+              "gridRow": 2,
+              "gridColumn": 0,
+              "margin": "5",
+              "verticalAlignment": "Center"
+            },
+            {
+              "type": "ComboBox",
+              "name": "priorityComboBox",
+              "gridRow": 2,
+              "gridColumn": 1,
+              "margin": "5",
+              "items": [
+                "Low",
+                "Medium",
+                "High",
+                "Critical"
+              ],
+              "defaultSelection": "Medium",
+              "borderColor": "#000000",
+              "borderThickness": "1"
+            },
+            {
+              "type": "Label",
+              "content": "Category:",
+              "gridRow": 3,
+              "gridColumn": 0,
+              "margin": "5",
+              "verticalAlignment": "Center"
+            },
+            {
+              "type": "ComboBox",
+              "name": "categoryComboBox",
+              "gridRow": 3,
+              "gridColumn": 1,
+              "margin": "5",
+              "items": [
+                "Hardware",
+                "Software",
+                "Account",
+                "Network",
+                "Other"
+              ],
+              "defaultSelection": "Software",
+              "borderColor": "#000000",
+              "borderThickness": "1"
+            },
+            {
+              "type": "Label",
+              "content": "Description:",
+              "gridRow": 4,
+              "gridColumn": 0,
+              "margin": "5",
+              "verticalAlignment": "Top"
+            },
+            {
+              "type": "TextBox",
+              "name": "descriptionBox",
+              "gridRow": 4,
+              "gridColumn": 1,
+              "margin": "5",
+              "height": 150,
+              "textWrapping": "Wrap",
+              "verticalAlignment": "Stretch",
+              "borderColor": "#000000",
+              "borderThickness": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "WrapPanel",
+      "name": "ActionBar",
+      "gridRow": 1,
+      "gridColumn": 0,
+      "horizontalAlignment": "Stretch",
+      "backgroundColor": "#EAEAEA",
+      "borderThickness": "0,1,0,0",
+      "borderColor": "#CCCCCC",
+      "padding": "5",
+      "contentControls": [
+        {
+          "type": "Label",
+          "content": "Log File:",
+          "verticalAlignment": "Center",
+          "margin": "5"
+        },
+        {
+          "type": "TextBox",
+          "name": "logFilePathBox",
+          "width": 300,
+          "margin": "5",
+          "borderColor": "#000000",
+          "borderThickness": "1"
+        },
+        {
+          "type": "Button",
+          "content": "Browse...",
+          "action": "browsesavefile",
+          "targetTextBoxName": "logFilePathBox",
+          "margin": "5"
+        },
+        {
+          "type": "Button",
+          "name": "SubmitTicketButton",
+          "content": "Log Ticket",
+          "action": "exportdata",
+          "isBold": true,
+          "margin": "5"
+        }
+      ]
+    }
+  ]
+}

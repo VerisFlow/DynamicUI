@@ -1,0 +1,134 @@
+﻿{
+  "window": {
+    "title": "DataHub SQL Client - Query Executor",
+    "width": 1200,
+    "height": 800,
+    "minWidth": 900,
+    "minHeight": 650
+  },
+  "theme": {
+    "background": "#F7F9FC",
+    "foreground": "#333333",
+    "controlBackground": "#FFFFFF",
+    "accent": "#007ACC",
+    "accentForeground": "#FFFFFF",
+    "borderColor": "#E0E6EF",
+    "errorForeground": "#C0392B"
+  },
+  "layoutDefinition": {
+    "columnDefinitions": [ "*" ],
+    "rowDefinitions": [
+      "250",
+      "*",
+      "auto"
+    ]
+  },
+  "controls": [
+    {
+      "type": "Grid",
+      "gridRow": 0,
+      "margin": "10",
+      "rowDefinitions": [ "auto", "*" ],
+      "contentControls": [
+        {
+          "type": "Border",
+          "padding": "10",
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#E0E6EF",
+          "borderThickness": "1",
+          "margin": "0,0,0,10",
+          "contentControls": [
+            {
+              "type": "Grid",
+              "columnDefinitions": [ "*", "auto" ],
+              "contentControls": [
+                {
+                  "type": "TextBlock",
+                  "text": "SQL Query Editor",
+                  "fontSize": 16,
+                  "fontWeight": "SemiBold"
+                },
+                {
+                  "type": "Button",
+                  "content": "Execute Query",
+                  "action": "sql_execute",
+                  "pluginOwner": "SqlClient",
+                  "gridColumn": 1,
+                  "width": 150,
+                  "height": 35,
+                  "fontSize": 14
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TextBox",
+          "name": "QueryInput",
+          "gridRow": 1,
+          "text": "SELECT * FROM Users WHERE Status = 'Active' LIMIT 100;",
+          "textWrapping": "Wrap",
+          "backgroundColor": "#FAFAFA",
+          "borderColor": "#E0E6EF",
+          "borderThickness": "1"
+        }
+      ]
+    },
+
+    {
+      "type": "TabControl",
+      "gridRow": 1,
+      "margin": "10,0,10,10",
+      "tabItems": [
+        {
+          "header": "Result Data (Query 1)",
+          "contentControls": [
+            {
+              "type": "DataGrid",
+              "name": "QueryResultGrid",
+              "margin": "10"
+            }
+          ]
+        },
+        {
+          "header": "Messages / Log",
+          "contentControls": [
+            {
+              "type": "ListBox",
+              "name": "ExecutionLog",
+              "margin": "10",
+              "items": [
+                "[14:00:00] Connected to Database: Production_DB.",
+                "[14:00:05] Query executed successfully.",
+                "[14:00:06] Rows returned: 100."
+              ]
+            }
+          ]
+        },
+        {
+          "header": "Schema Browser",
+          "contentControls": [
+            {
+              "type": "TextBlock",
+              "text": "Table Schemas (Users, Orders, Products)",
+              "margin": "10",
+              "fontSize": 16
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "TextBlock",
+      "name": "StatusBar",
+      "gridRow": 2,
+      "text": "Database: Connected | User: Analyst | Latency: 5ms",
+      "padding": "8",
+      "backgroundColor": "#34495E",
+      "foregroundColor": "#F7F9FC",
+      "fontSize": 12,
+      "verticalAlignment": "Center"
+    }
+  ]
+}

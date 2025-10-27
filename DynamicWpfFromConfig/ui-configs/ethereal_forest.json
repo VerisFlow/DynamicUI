@@ -1,0 +1,116 @@
+﻿{
+  "window": {
+    "title": "Enchanted Gallery: Ethereal Forest",
+    "width": 1200,
+    "height": 800,
+    "minWidth": 800,
+    "minHeight": 600
+  },
+  "theme": {
+    "background": "#1A2035",
+    "foreground": "#E0E6F0",
+    "controlBackground": "#28344D",
+    "accent": "#9F7AEA",
+    "accentForeground": "#FFFFFF",
+    "borderColor": "#4D5B7D"
+  },
+  "layoutDefinition": {
+    "columnDefinitions": [
+      "2*",
+      "1*"
+    ],
+    "rowDefinitions": [
+      "*"
+    ]
+  },
+  "controls": [
+    {
+      "type": "Border",
+      "name": "ImageDisplayFrame",
+      "gridRow": 0,
+      "gridColumn": 0,
+      "margin": "25",
+      "padding": "10",
+      "borderThickness": "1",
+      "borderColor": "#4D5B7D",
+      "cornerRadius": 8,
+      "contentControls": [
+        {
+          "type": "Image",
+          "name": "FeaturedArt",
+          "source": "resources/ethereal_forest.png",
+          "stretch": "Uniform",
+          "horizontalAlignment": "Center",
+          "verticalAlignment": "Center"
+        }
+      ]
+    },
+    {
+      "type": "Grid",
+      "name": "ArtworkDetails",
+      "gridRow": 0,
+      "gridColumn": 1,
+      "margin": "25,25,25,25",
+      "rowDefinitions": [
+        "Auto",
+        "Auto",
+        "Auto",
+        "*",
+        "Auto"
+      ],
+      "contentControls": [
+        {
+          "type": "TextBlock",
+          "name": "ArtTitle",
+          "gridRow": 0,
+          "text": "Whispers of the Ethereal Grove",
+          "fontSize": 32,
+          "isBold": true,
+          "textWrapping": "Wrap",
+          "lineHeight": 1.2,
+          "foregroundColor": "#9F7AEA"
+        },
+        {
+          "type": "TextBlock",
+          "name": "ArtistInfo",
+          "gridRow": 1,
+          "text": "Created by Lumina Aethel",
+          "fontSize": 18,
+          "foregroundColor": "#B8C2D8",
+          "margin": "0,8,0,15"
+        },
+        {
+          "type": "Border",
+          "gridRow": 2,
+          "height": 1,
+          "backgroundColor": "#4D5B7D",
+          "margin": "0,0,0,15"
+        },
+        {
+          "type": "TextBlock",
+          "name": "Description",
+          "gridRow": 3,
+          "text": "A mystical journey into the heart of an ancient forest, where luminescent flora illuminate hidden pathways and spectral figures drift through mist-laden trees. This piece invites contemplation on nature's enduring magic and the unseen realms beyond our perception. Each light flicker, each gentle curve of the stream, tells a silent story of enchantment and wonder.",
+          "fontSize": 15,
+          "textWrapping": "Wrap",
+          "lineHeight": 1.5,
+          "verticalAlignment": "Top",
+          "foregroundColor": "#E0E6F0"
+        },
+        {
+          "type": "Button",
+          "name": "ExploreMoreButton",
+          "gridRow": 4,
+          "content": "Explore Gallery",
+          "action": "showmessage",
+          "actionMessage": "Navigating to other ethereal creations...",
+          "horizontalAlignment": "Stretch",
+          "margin": "0,25,0,0",
+          "padding": "10,0,10,0",
+          "fontSize": 16,
+          "isBold": true
+        }
+      ]
+    }
+  ]
+}
