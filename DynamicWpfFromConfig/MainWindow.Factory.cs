@@ -1,5 +1,6 @@
 ﻿using DynamicWpfFromConfig.Models;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,7 +24,7 @@ namespace DynamicWpfFromConfig
         {
             FrameworkElement? element = null;
 
-            switch (model.Type?.ToLower())
+            switch (model.Type?.ToLowerInvariant())
             {
                 case "label":
                     // Simple text label.
@@ -41,7 +42,7 @@ namespace DynamicWpfFromConfig
                     var padding = new Thickness();
                     if (!string.IsNullOrEmpty(model.Padding))
                     {
-                        var paddingObj = new ThicknessConverter().ConvertFromString(model.Padding);
+                        var paddingObj = new ThicknessConverter().ConvertFrom(null, CultureInfo.InvariantCulture, model.Padding);
                         if (paddingObj is Thickness p)
                         {
                             padding = p;
@@ -97,7 +98,7 @@ namespace DynamicWpfFromConfig
 
                     if (!string.IsNullOrEmpty(model.BorderThickness))
                     {
-                        var thicknessObj = new ThicknessConverter().ConvertFromString(model.BorderThickness);
+                        var thicknessObj = new ThicknessConverter().ConvertFrom(null, CultureInfo.InvariantCulture, model.BorderThickness);
                         if (thicknessObj is Thickness thickness)
                         {
                             border.BorderThickness = thickness;
@@ -110,7 +111,7 @@ namespace DynamicWpfFromConfig
 
                     if (!string.IsNullOrEmpty(model.Padding))
                     {
-                        var paddingObj = new ThicknessConverter().ConvertFromString(model.Padding);
+                        var paddingObj = new ThicknessConverter().ConvertFrom(null, CultureInfo.InvariantCulture, model.Padding);
                         if (paddingObj is Thickness p)
                         {
                             border.Padding = p;
@@ -297,7 +298,7 @@ namespace DynamicWpfFromConfig
                     };
 
                     // Allow "Multiple" or "Extended" (Ctrl+Click) column selection
-                    if (model.SelectionMode?.ToLower() == "multiple" || model.SelectionMode?.ToLower() == "extended")
+                    if (model.SelectionMode?.ToLowerInvariant() == "multiple" || model.SelectionMode?.ToLowerInvariant() == "extended")
                     {
                         listBox.SelectionMode = SelectionMode.Extended;
                     }
@@ -489,7 +490,7 @@ namespace DynamicWpfFromConfig
 
             // --- Header Creation Logic ---
             var headerFontWeight = model.HeaderFontWeight != null
-                ? (new FontWeightConverter().ConvertFromString(model.HeaderFontWeight) as FontWeight?) ?? FontWeights.Normal
+                ? (new FontWeightConverter().ConvertFrom(null, CultureInfo.InvariantCulture, model.HeaderFontWeight) as FontWeight?) ?? FontWeights.Normal
                 : FontWeights.Normal;
 
             // Create and Populate Row Headers (if they exist)
@@ -586,7 +587,7 @@ namespace DynamicWpfFromConfig
             // Get default well styles
             double defaultBorderThickness = model.WellDefaults?.BorderThickness ?? 1.0;
             double defaultFontSize = model.WellDefaults?.FontSize ?? 8.0;
-            FontWeight defaultFontWeight = (new FontWeightConverter().ConvertFromString(model.WellDefaults?.FontWeight ?? "Normal") as FontWeight?) ?? FontWeights.Normal;
+            FontWeight defaultFontWeight = (new FontWeightConverter().ConvertFrom(null, CultureInfo.InvariantCulture, model.WellDefaults?.FontWeight ?? "Normal") as FontWeight?) ?? FontWeights.Normal;
             Brush defaultFontColor = TryParseColor(model.WellDefaults?.FontColor) ?? Brushes.White;
 
             // Create and style each well
@@ -609,7 +610,7 @@ namespace DynamicWpfFromConfig
                         wellButton.Background = TryParseColor(wellModel.Color) ?? Brushes.WhiteSmoke;
                         wellButton.FontSize = wellModel.FontSize ?? defaultFontSize;
                         wellButton.FontWeight = wellModel.FontWeight != null
-                            ? (new FontWeightConverter().ConvertFromString(wellModel.FontWeight) as FontWeight?) ?? FontWeights.Normal
+                            ? (new FontWeightConverter().ConvertFrom(null, CultureInfo.InvariantCulture, wellModel.FontWeight) as FontWeight?) ?? FontWeights.Normal
                             : defaultFontWeight;
                         wellButton.Foreground = TryParseColor(wellModel.FontColor) ?? defaultFontColor;
                         wellButton.BorderThickness = new Thickness(defaultBorderThickness);
@@ -696,7 +697,7 @@ namespace DynamicWpfFromConfig
             // Set other common layout properties.
             if (!string.IsNullOrEmpty(model.Margin))
             {
-                var marginObj = new ThicknessConverter().ConvertFromString(model.Margin);
+                var marginObj = new ThicknessConverter().ConvertFrom(null, CultureInfo.InvariantCulture, model.Margin);
                 if (marginObj is Thickness margin)
                 {
                     element.Margin = margin;
@@ -748,13 +749,13 @@ namespace DynamicWpfFromConfig
             var grid = new Grid();
 
             // Apply row/column definitions if provided by the parent Grid model
-            if (parentModel?.Type?.ToLower() == "grid")
+            if (parentModel?.Type?.ToLowerInvariant() == "grid")
             {
                 if (parentModel.RowDefinitions != null)
                 {
                     foreach (var rowDef in parentModel.RowDefinitions)
                     {
-                        var gridLengthObj = new GridLengthConverter().ConvertFromString(rowDef);
+                        var gridLengthObj = new GridLengthConverter().ConvertFrom(null, CultureInfo.InvariantCulture, rowDef);
                         if (gridLengthObj is GridLength gl) grid.RowDefinitions.Add(new RowDefinition { Height = gl });
                     }
                 }
@@ -762,7 +763,7 @@ namespace DynamicWpfFromConfig
                 {
                     foreach (var colDef in parentModel.ColumnDefinitions)
                     {
-                        var gridLengthObj = new GridLengthConverter().ConvertFromString(colDef);
+                        var gridLengthObj = new GridLengthConverter().ConvertFrom(null, CultureInfo.InvariantCulture, colDef);
                         if (gridLengthObj is GridLength gl) grid.ColumnDefinitions.Add(new ColumnDefinition { Width = gl });
                     }
                 }

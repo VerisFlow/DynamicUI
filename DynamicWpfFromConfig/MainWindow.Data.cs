@@ -1,5 +1,6 @@
 ﻿using DynamicWpfFromConfig.Models;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -193,7 +194,7 @@ namespace DynamicWpfFromConfig
                     else
                         throw new Exception("Configuration error: Delimiter cannot be empty.");
                 }
-                return (T)Convert.ChangeType(valueStr, typeof(T));
+                return (T)Convert.ChangeType(valueStr, typeof(T), CultureInfo.InvariantCulture);
             }
             catch (Exception ex)
             {
@@ -334,7 +335,7 @@ namespace DynamicWpfFromConfig
                 string targetFile = GetConfigParameter<string>(exportConfig.TargetFile, exportConfig.TargetFileFromControl);
                 char delimiter = GetConfigParameter<char>(exportConfig.Delimiter, exportConfig.DelimiterFromControl);
                 bool includeHeaders = GetConfigParameter<bool>(exportConfig.IncludeHeaders.ToString(), exportConfig.IncludeHeadersFromControl);
-                string writeMode = GetConfigParameter<string>(exportConfig.WriteMode, exportConfig.WriteModeFromControl)?.ToLower() ?? "overwrite";
+                string writeMode = GetConfigParameter<string>(exportConfig.WriteMode, exportConfig.WriteModeFromControl)?.ToLowerInvariant() ?? "overwrite";
 
                 if (!Path.IsPathRooted(targetFile))
                 {
@@ -459,7 +460,7 @@ namespace DynamicWpfFromConfig
                 string writeMode = GetConfigParameter<string>(
                     exportConfig.WriteMode,
                     exportConfig.WriteModeFromControl
-                )?.ToLower() ?? "overwrite";
+                )?.ToLowerInvariant() ?? "overwrite";
 
                 if (string.IsNullOrWhiteSpace(targetFile))
                 {

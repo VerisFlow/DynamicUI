@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -30,7 +31,7 @@ namespace DynamicWpfFromConfig
         /// </summary>
         private void SetControlProperty(FrameworkElement control, string propertyName, string value)
         {
-            switch (propertyName.ToLower())
+            switch (propertyName.ToLowerInvariant())
             {
                 case "text":
                 case "content": 
@@ -82,7 +83,7 @@ namespace DynamicWpfFromConfig
             if (string.IsNullOrEmpty(colorName)) return null;
             try
             {
-                var brushObj = new BrushConverter().ConvertFromString(colorName);
+                var brushObj = new BrushConverter().ConvertFrom(null, CultureInfo.InvariantCulture, colorName);
                 return brushObj as Brush;
             }
             catch

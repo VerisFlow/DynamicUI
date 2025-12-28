@@ -18,7 +18,7 @@ namespace DynamicWpfFromConfig
         {
             if (sender is not Button button || button.Tag is not ControlModel model) return;
 
-            string? actionName = model.Action?.ToLower();
+            string? actionName = model.Action?.ToLowerInvariant();
             if (string.IsNullOrEmpty(actionName)) return;
 
             // --- ACTION ROUTING LOGIC ---
@@ -106,7 +106,7 @@ namespace DynamicWpfFromConfig
             // If an action is defined for this event
             if (eventAction != null && !string.IsNullOrEmpty(eventAction.Action))
             {
-                string actionName = eventAction.Action.ToLower();
+                string actionName = eventAction.Action.ToLowerInvariant();
 
                 // Check if the action is one handled by the Host
                 bool isHostAction = new[] {

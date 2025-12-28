@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
 
@@ -23,7 +24,7 @@ namespace DynamicWpfFromConfig
             try
             {
                 // BrushConverter is a built-in WPF tool for this.
-                object? convertedValue = new BrushConverter().ConvertFromString(colorString);
+                object? convertedValue = new BrushConverter().ConvertFrom(null, CultureInfo.InvariantCulture, colorString);
                 if (convertedValue is Brush brush)
                 {
                     result = brush;
@@ -51,7 +52,7 @@ namespace DynamicWpfFromConfig
             try
             {
                 // ThicknessConverter is a built-in WPF tool for this.
-                object? convertedValue = new ThicknessConverter().ConvertFromString(thicknessString);
+                object? convertedValue = new ThicknessConverter().ConvertFrom(null, CultureInfo.InvariantCulture, thicknessString);
                 if (convertedValue is Thickness thickness)
                 {
                     result = thickness;

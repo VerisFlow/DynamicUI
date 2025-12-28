@@ -1,6 +1,7 @@
 ﻿using DynamicWpfFromConfig.Models;
 using Microsoft.Win32;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -291,7 +292,7 @@ namespace DynamicWpfFromConfig
             {
                 foreach (var rowDef in layout.RowDefinitions)
                 {
-                    var gridLengthObj = new GridLengthConverter().ConvertFromString(rowDef);
+                    var gridLengthObj = new GridLengthConverter().ConvertFrom(null, CultureInfo.InvariantCulture, rowDef);
                     if (gridLengthObj is GridLength gridLength)
                     {
                         DynamicControlsContainer.RowDefinitions.Add(new RowDefinition { Height = gridLength });
@@ -304,7 +305,7 @@ namespace DynamicWpfFromConfig
             {
                 foreach (var colDef in layout.ColumnDefinitions)
                 {
-                    var gridLengthObj = new GridLengthConverter().ConvertFromString(colDef);
+                    var gridLengthObj = new GridLengthConverter().ConvertFrom(null, CultureInfo.InvariantCulture, colDef);
                     if (gridLengthObj is GridLength gridLength)
                     {
                         DynamicControlsContainer.ColumnDefinitions.Add(new ColumnDefinition { Width = gridLength });
